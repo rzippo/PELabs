@@ -29,6 +29,12 @@ class Txc : public cSimpleModule
 {
   private:
     int counter;
+
+    simsignal_t msgSeenSignal;
+    simsignal_t responseTimeSignal;
+
+    simtime_t lastSent;
+
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);

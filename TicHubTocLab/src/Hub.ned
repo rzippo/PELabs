@@ -20,6 +20,12 @@ package tictoclab;
 //
 simple Hub
 {
+    parameters:
+		bool randomForwarding = default(false);
+	
+		@signal[msgSeen](source="msgSeen");
+		@statistic[countMsg](title="count Message"; source="msgSeen"; record=sum);
+    
     gates:
     	input in[];
     	output out[];

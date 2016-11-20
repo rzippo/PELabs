@@ -23,6 +23,11 @@ void Txc::initialize()
 {
     counter = 0;
 
+    msgSeenSignal = registerSignal("msgSeen");
+    responseTimeSignal = registerSignal("responseTimeValue");
+
+    lastSent = 0;
+
     if (par("sendInitialMessage").boolValue())
     {
         cMessage *msg = new cMessage("tictocMsg");
@@ -38,8 +43,12 @@ void Txc::handleMessage(cMessage *msg)
         if(msg->isSelfMessage())
         {
             send(msg, "out");
+            emit(responseTimeSignal, simTime() - lastSent);
+            lastSent = simTime();
         } else
         {
+            emit(msgSeenSignal, 1);
+
             counter++;
             EV << counter << endl;
             if(par("procTimeSet"))
@@ -55,9 +64,11 @@ void Txc::handleMessage(cMessage *msg)
     }
     else
     {
+        emit(msgSeenSignal, 1);
         send(msg, "out");
+        emit(responseTimeSignal, simTime() - lastSent);
+        lastSent = simTime();
     }
-
 }
 
 }; // namespace

@@ -21,14 +21,26 @@ Define_Module(Hub);
 
 void Hub::initialize()
 {
+    msgSeenSignal = registerSignal("msgSeen");
+
     inSize = gateSize("in");
     outSize = gateSize("out");
 }
 
 void Hub::handleMessage(cMessage *msg)
 {
-    int in_index = msg->getArrivalGate()->getIndex();
-    send(msg, "out", (in_index + 1) % outSize);
+    emit(msgSeenSignal, 1);
+
+    if(par("randomForwarding"))
+    {
+        int random_out = (int) uniform(0, outSize);
+        send(msg, "out", random_out );
+    }
+    else
+    {
+        int in_index = msg->getArrivalGate()->getIndex();
+        send(msg, "out", (in_index + 1) % outSize);
+    }
 }
 
 } //namespace

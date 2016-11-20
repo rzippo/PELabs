@@ -26,6 +26,12 @@ simple Txc
         bool modelProcessingTime = default(false);
         bool procTimeSet = default(false);
         double procTime @unit(s) = default(10s);
+        
+		@signal[msgSeen](source="msgSeen");
+		@statistic[countMsg](title="count Message"; source="msgSeen"; record=sum);
+		
+		@signal[responseTimeValue](source="responseTime");
+		@statistic[responseTime](title="response time"; source="responseTimeValue"; record=mean);
     gates:
         input in;
         output out;

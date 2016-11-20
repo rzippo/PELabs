@@ -31,6 +31,8 @@ private:
     int inSize;
     int outSize;
 
+    simsignal_t msgSeenSignal;
+
   protected:
     virtual void initialize();
     virtual void handleMessage(cMessage *msg);
