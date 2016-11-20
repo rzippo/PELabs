@@ -1,0 +1,37 @@
+version 2
+run General-2-20161119-21:34:22-6846
+attr configname General
+attr datetime 20161119-21:34:22
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=2
+attr measurement ""
+attr network TicHubToc
+attr processid 6846
+attr repetition 2
+attr replication #2
+attr resultdir results
+attr runnumber 2
+attr seedset 2
+param **.hub.randomForwarding true
+param **.tic.modelProcessingTime true
+param **.tic.sendInitialMessage true
+param **.toc.modelProcessingTime true
+param **.toc.sendInitialMessage true
+
+scalar TicHubToc.tic 	responseTime:mean 	2.2144376166093
+attr source  responseTimeValue
+attr title  "response time, mean"
+scalar TicHubToc.tic 	countMsg:sum 	27
+attr source  msgSeen
+attr title  "count Message, sum"
+scalar TicHubToc.toc 	responseTime:mean 	3.2816135492796
+attr source  responseTimeValue
+attr title  "response time, mean"
+scalar TicHubToc.toc 	countMsg:sum 	19
+attr source  msgSeen
+attr title  "count Message, sum"
+scalar TicHubToc.hub 	countMsg:sum 	46
+attr source  msgSeen
+attr title  "count Message, sum"
