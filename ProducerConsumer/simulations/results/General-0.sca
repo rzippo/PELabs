@@ -1,0 +1,22 @@
+version 2
+run General-0-20161120-23:52:53-4705
+attr configname General
+attr datetime 20161120-23:52:53
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network ProducerConsumer
+attr processid 4705
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.C.id 0
+param **.C.period 2s
+
+scalar ProducerConsumer.C 	meanResponseTime:mean 	5.688135023043
+attr source  responseReceived
+attr title  "Mean response time, mean"

@@ -20,7 +20,13 @@ package producerconsumer;
 //
 simple Consumer
 {
-    
+    parameters:
+    	int id;
+    	double period @unit(s);
+    	    	
+		@signal[responseReceived](source="responseReceived");
+    	@statistic[meanResponseTime](title="Mean response time"; source="responseReceived"; record="mean");
+    	    	
     gates:
         input in;
         output out;

@@ -13,29 +13,28 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __PRODUCERCONSUMER_CONSUMER_H_
-#define __PRODUCERCONSUMER_CONSUMER_H_
+#include "Producer.h"
+#include "ProducerResponse_m.h"
 
-#include <omnetpp.h>
+Define_Module(Producer);
 
-using namespace omnetpp;
-
-/**
- * TODO - Generated class
- */
-class Consumer : public cSimpleModule
+void Producer::initialize()
 {
-private:
-    int id;
-    double period;
+    //Nothing to do here
+}
 
-    cMessage* periodicSend;
-
-    simsignal_t responseReceivedSignal;
-
-  protected:
-    virtual void initialize();
-    virtual void handleMessage(cMessage *msg);
-};
-
-#endif
+void Producer::handleMessage(cMessage *msg)
+{
+    if(!msg->isSelfMessage())
+    {
+        //Computed response will be ready to send later
+        ProducerResponse* response = new ProducerResponse("Producer response");
+        response->setRequest(static_cast<ConsumerRequest*>(msg));
+        scheduleAt(simTime() + par("processingTime"), response);
+    }
+    else
+    {
+        //Response is now computed and ready to send
+        send(msg, "out");
+    }
+}

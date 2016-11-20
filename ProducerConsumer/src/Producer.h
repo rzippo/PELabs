@@ -13,8 +13,8 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __PRODUCERCONSUMER_CONSUMER_H_
-#define __PRODUCERCONSUMER_CONSUMER_H_
+#ifndef __PRODUCERCONSUMER_PRODUCER_H_
+#define __PRODUCERCONSUMER_PRODUCER_H_
 
 #include <omnetpp.h>
 
@@ -23,15 +23,10 @@ using namespace omnetpp;
 /**
  * TODO - Generated class
  */
-class Consumer : public cSimpleModule
+class Producer : public cSimpleModule
 {
 private:
-    int id;
-    double period;
-
-    cMessage* periodicSend;
-
-    simsignal_t responseReceivedSignal;
+    //double processingTime; NO! DEVE ESSERE RV!
 
   protected:
     virtual void initialize();

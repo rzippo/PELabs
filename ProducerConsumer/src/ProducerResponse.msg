@@ -13,29 +13,22 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __PRODUCERCONSUMER_CONSUMER_H_
-#define __PRODUCERCONSUMER_CONSUMER_H_
+cplusplus {{
+#include "ConsumerRequest_m.h"
+typedef ConsumerRequest* ConsumerRequestPointer;
+}}
+class noncobject ConsumerRequestPointer;
 
-#include <omnetpp.h>
 
-using namespace omnetpp;
+//cplusplus {{
+//#include <map>
+//typedef OtherType std::map<int,int>;
+//}}
+//class noncobject OtherType;
 
-/**
- * TODO - Generated class
- */
-class Consumer : public cSimpleModule
-{
-private:
-    int id;
-    double period;
-
-    cMessage* periodicSend;
-
-    simsignal_t responseReceivedSignal;
-
-  protected:
-    virtual void initialize();
-    virtual void handleMessage(cMessage *msg);
-};
-
-#endif
+//
+// TODO generated message class
+//
+message ProducerResponse {
+	ConsumerRequestPointer request;
+}

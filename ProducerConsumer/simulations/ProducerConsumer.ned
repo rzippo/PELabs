@@ -13,29 +13,18 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __PRODUCERCONSUMER_CONSUMER_H_
-#define __PRODUCERCONSUMER_CONSUMER_H_
+package producerconsumer.simulations;
 
-#include <omnetpp.h>
+import producerconsumer.Consumer;
+import producerconsumer.Producer;
 
-using namespace omnetpp;
-
-/**
- * TODO - Generated class
- */
-class Consumer : public cSimpleModule
+network ProducerConsumer
 {
-private:
-    int id;
-    double period;
-
-    cMessage* periodicSend;
-
-    simsignal_t responseReceivedSignal;
-
-  protected:
-    virtual void initialize();
-    virtual void handleMessage(cMessage *msg);
-};
-
-#endif
+    submodules:
+        C: Consumer;
+        P: Producer;
+        
+    connections:
+        C.out --> {delay = 100 ms;} --> P.in;
+        C.in <-- {delay = 100 ms;} <-- P.out;
+}

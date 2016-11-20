@@ -14,15 +14,47 @@
 // 
 
 #include "Consumer.h"
+#include "ConsumerRequest_m.h"
+#include "ProducerResponse_m.h"
 
 Define_Module(Consumer);
 
 void Consumer::initialize()
 {
-    scheduleAt(0, )
+    id = par("id");
+    period = par("period");
+
+    periodicSend = new cMessage("Periodic send");
+    scheduleAt(simTime(), periodicSend);
+
+    //Signal setup
+    responseReceivedSignal = registerSignal("responseReceived");
 }
 
 void Consumer::handleMessage(cMessage *msg)
 {
-    // TODO - Generated method body
+    if(msg->isSelfMessage())
+    {
+        //Send scheduled request
+
+        ConsumerRequest* request = new ConsumerRequest("Consumer request");
+        request->setConsumerID(id);
+        request->setSentTimestamp(simTime());
+        send(request, "out");
+
+        //Schedule next message
+
+        scheduleAt(simTime() + period, periodicSend);
+    }
+    else
+    {
+        //Handle producer response
+        ProducerResponse* resp = static_cast<ProducerResponse*>(msg);
+
+        simtime_t responseTime = simTime() - resp->getRequest()->getSentTimestamp();
+        emit(responseReceivedSignal, responseTime);
+
+        delete resp->getRequest();
+        delete resp;
+    }
 }
