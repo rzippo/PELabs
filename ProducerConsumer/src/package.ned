@@ -1,0 +1,3 @@
+package producerconsumer;
+
+@license(LGPL);
