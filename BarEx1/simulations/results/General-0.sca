@@ -1,0 +1,26 @@
+version 2
+run General-0-20161124-17:05:56-3474
+attr configname General
+attr datetime 20161124-17:05:56
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network Bar1
+attr processid 3474
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+scalar Bar1.k.o 	TimeBetweenReception:mean 	1.5080473313192
+attr source  TimeBetweenReception
+attr title  "TimeBetweenReception, mean"
+scalar Bar1.k.o 	TimeBetweenReception:min 	0
+attr source  TimeBetweenReception
+attr title  "TimeBetweenReception, min"
+scalar Bar1.k.o 	TimeBetweenReception:max 	2.996
+attr source  TimeBetweenReception
+attr title  "TimeBetweenReception, max"

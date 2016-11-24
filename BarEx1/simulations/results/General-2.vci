@@ -1,0 +1,22 @@
+file 30282 1480003556                                           
+version 2
+run General-2-20161124-17:05:56-3476
+attr configname General
+attr datetime 20161124-17:05:56
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=2
+attr measurement ""
+attr network Bar1
+attr processid 3476
+attr repetition 2
+attr replication #2
+attr resultdir results
+attr runnumber 2
+attr seedset 2
+
+vector 0  Bar1.k.o  TimeBetweenReception:vector  ETV
+attr source  TimeBetweenReception
+attr title  "TimeBetweenReception, vector"
+0	490 29792 2 2020 1.307984707877 1498.336224156911 1010 0 2.998 1497.828 2966.497714
